@@ -2,9 +2,12 @@
   "name": "voice-assistant-phase1",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": ">=18.x"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
