@@ -3,6 +3,7 @@ import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Mic, Play, Trash2, UserCheck, Timer, BarChart2, PieChart, Users, Zap } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Pie, PieChart as RePieChart, Cell, Bar, BarChart as ReBarChart } from "recharts";
+import AssistantControls from "../components/ui/AssistantControls";
 
 const overviewStats = [
   { label: "Total Queries", value: 1240, icon: BarChart2 },
@@ -47,6 +48,10 @@ const barData = [
 export default function Dashboard() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+      {/* Assistant Controls (top centered) */}
+      <div className="col-span-1 md:col-span-2 xl:col-span-4 flex justify-center">
+        <AssistantControls />
+      </div>
       {/* Overview Cards */}
       {overviewStats.map((stat) => (
         <Card key={stat.label} className="glass-card flex items-center gap-4">
@@ -59,11 +64,11 @@ export default function Dashboard() {
           </div>
         </Card>
       ))}
-      {/* Recent Conversations */}
-      <div className="col-span-1 md:col-span-2 xl:col-span-2">
+      {/* Conversations History */}
+      <div className="col-span-1 md:col-span-2 xl:col-span-4">
         <Card className="glass-card">
           <div className="flex justify-between items-center mb-2">
-            <div className="font-semibold text-lg">Recent Conversations</div>
+            <div className="font-semibold text-lg">Conversations History</div>
             <Button variant="ghost" className="text-blue-600">View All</Button>
           </div>
           <CardContent>

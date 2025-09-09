@@ -6,7 +6,7 @@ import { Card } from "./ui/card";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "./ui/dropdown-menu";
 import { Switch } from "./ui/switch";
 import { useTheme } from "./ui/theme-provider";
-import VerticalNavbar from "./ui/VerticalNavbar";
+import BottomNavbar from "./ui/BottomNavbar";
 import logo from "../assets/logo.svg?url";
 
 const navigationLinks = [
@@ -27,12 +27,8 @@ export default function DashboardLayout({ children }: { children?: React.ReactNo
 
   return (
     <div className="min-h-screen flex bg-gradient-to-br from-slate-100 to-slate-200 dark:from-[#18181b] dark:to-[#23272f]">
-      {/* New Vertical Navigation */}
-      <VerticalNavbar 
-        links={navigationLinks} 
-        onLogout={handleLogout} 
-        logoutIcon={<LogOut className="w-5 h-5" />} 
-      />
+  {/* Bottom Navigation */}
+  <BottomNavbar />
       
       {/* Main Area */}
       <div className="flex-1 flex flex-col min-w-0">
@@ -64,8 +60,8 @@ export default function DashboardLayout({ children }: { children?: React.ReactNo
           </div>
         </header>
         
-        {/* Content with increased padding to account for vertical navbar */}
-        <main className="flex-1 p-6 md:pl-16 overflow-y-auto">
+  {/* Content with bottom padding for bottom navbar */}
+  <main className="flex-1 p-6 pb-28 overflow-y-auto">
           <Card className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border-white/30 dark:border-slate-700/50 shadow-lg p-6">
             {children || <Outlet />}
           </Card>
