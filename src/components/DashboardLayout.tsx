@@ -7,7 +7,6 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { Switch } from "./ui/switch";
 import { useTheme } from "./ui/theme-provider";
 import VerticalNavbar from "./ui/VerticalNavbar";
-import AssistantControlsDemo from "./AssistantControlsDemo";
 import logo from "../assets/logo.svg?url";
 
 const navigationLinks = [
@@ -65,14 +64,8 @@ export default function DashboardLayout({ children }: { children?: React.ReactNo
           </div>
         </header>
         
-        {/* Content with increased padding to account for horizontal navbar at bottom */}
-        <main className="flex-1 p-6 pb-20 overflow-y-auto">
-          {/* Assistant Controls Card */}
-          <div className="mb-6">
-            <AssistantControlsDemo />
-          </div>
-          
-          {/* Main Content Card */}
+        {/* Content with increased padding to account for vertical navbar */}
+        <main className="flex-1 p-6 md:pl-16 overflow-y-auto">
           <Card className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border-white/30 dark:border-slate-700/50 shadow-lg p-6">
             {children || <Outlet />}
           </Card>

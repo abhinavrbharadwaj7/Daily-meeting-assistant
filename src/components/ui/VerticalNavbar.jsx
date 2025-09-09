@@ -6,7 +6,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tool
 import { motion } from "framer-motion";
 
 /**
- * HorizontalNavbar - A flowing horizontal navigation bar with glassmorphism effect
+ * VerticalNavbar - A flowing vertical navigation bar with glassmorphism effect
  * @param {Object} props
  * @param {Array} props.links - Navigation links with name, icon, and to properties
  * @param {Function} props.onLogout - Function to call when logout is clicked
@@ -17,13 +17,13 @@ const VerticalNavbar = ({ links, onLogout, logoutIcon }) => {
 
   return (
     <motion.div 
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 flex flex-row gap-2 z-50"
-      initial={{ y: 100 }}
-      animate={{ y: 0 }}
+      className="fixed left-4 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-50"
+      initial={{ x: -100 }}
+      animate={{ x: 0 }}
       transition={{ duration: 0.5, type: "spring" }}
     >
-      <div className="rounded-full py-2 px-4 bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg dark:bg-slate-900/40 dark:border-slate-700/50">
-        <div className="flex flex-row items-center gap-6 relative">
+      <div className="rounded-full py-4 px-2 bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg dark:bg-slate-900/40 dark:border-slate-700/50">
+        <div className="flex flex-col items-center gap-6 relative">
           {/* Flowing highlight background for active item */}
           {links.map((item, index) => {
             const active = location.pathname.startsWith(item.to);
@@ -31,12 +31,12 @@ const VerticalNavbar = ({ links, onLogout, logoutIcon }) => {
               return (
                 <motion.div
                   key={`highlight-${item.name}`}
-                  className="absolute top-0 bottom-0 rounded-full bg-white/40 dark:bg-slate-700/60 backdrop-blur-md z-0 border border-white/50 dark:border-slate-600/50"
+                  className="absolute left-0 right-0 rounded-full bg-white/40 dark:bg-slate-700/60 backdrop-blur-md z-0 border border-white/50 dark:border-slate-600/50"
                   layoutId="activeBackground"
                   initial={false}
                   animate={{
-                    x: index * 56, // Adjust based on icon spacing
-                    width: 44,
+                    y: index * 56, // Adjust based on icon spacing
+                    height: 44,
                   }}
                   transition={{
                     type: "spring",
@@ -70,7 +70,7 @@ const VerticalNavbar = ({ links, onLogout, logoutIcon }) => {
                       <Icon className="w-6 h-6" />
                     </Link>
                   </TooltipTrigger>
-                  <TooltipContent side="top">
+                  <TooltipContent side="right">
                     <p>{item.name}</p>
                   </TooltipContent>
                 </Tooltip>
@@ -92,7 +92,7 @@ const VerticalNavbar = ({ links, onLogout, logoutIcon }) => {
               {logoutIcon}
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="top">
+          <TooltipContent side="right">
             <p>Logout</p>
           </TooltipContent>
         </Tooltip>
@@ -101,5 +101,4 @@ const VerticalNavbar = ({ links, onLogout, logoutIcon }) => {
   );
 };
 
-// Rename component for clarity while keeping the file name the same
 export default VerticalNavbar;
